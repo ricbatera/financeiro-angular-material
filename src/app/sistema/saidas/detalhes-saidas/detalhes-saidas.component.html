@@ -1,0 +1,69 @@
+<div class="espaco">
+    <h5>Detalhes de {{itemSelecionado.descricao}}</h5>
+<div class="row fomulario">
+    <div class="col s12">
+        <div class="row">
+            <div class="input-field col s10">
+                <input id="descricao" type="text" class="validate" [(ngModel)]="itemSelecionado.descricao">
+                <label for="descricao" class="active">Descrição</label>
+            </div>
+            <div class="input-field col s2">
+                <input id="status" type="text" class="validate" [(ngModel)]="itemSelecionado.status">
+                <label for="status" class="active">Status</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s3">
+                <input id="categoria" type="text" class="validate" [(ngModel)]="itemSelecionado.categoria">
+                <label for="categoria" class="active">Categoria</label>
+            </div>
+            <div class="input-field col s3">
+                <input id="dataVencimento" type="text" class="validate" [(ngModel)]="itemSelecionado.dataVencimento">
+                <label for="dataVencimento" class="active">Data de Vencimento</label>
+            </div>
+            <div class="input-field col s3">
+                <input id="dataVencimento1" type="text" class="validate" [(ngModel)]="itemSelecionado.dataVencimento">
+                <label for="dataVencimento1" class="active">Data de Pagamento</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s2">
+                <div>
+                    <label>
+                        <input class="with-gap" name="parcelado" type="radio" />
+                        <span>Sim</span>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input class="with-gap" name="parcelado" type="radio" />
+                        <span>Não</span>
+                    </label>
+                </div>
+                <label class="active">Parcelado?</label>
+            </div>
+
+            <div class="input-field col s2">
+                <input id="categoria" type="number" class="validate" value="12">
+                <label for="categoria" class="active">Qtde parcelas</label>
+            </div>
+
+            <div class="input-field col s3">
+                <div>
+                    <label>
+                        <input class="with-gap" name="custoDiario" type="radio" />
+                        <span>Sim</span>
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <input class="with-gap" name="custoDiario" type="radio" />
+                        <span>Não</span>
+                    </label>
+                </div>
+                <label class="active">Custo não previsto?</label>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

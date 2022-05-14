@@ -1,0 +1,54 @@
+<div>
+    <div class="row">
+        <h5 class="col s12">Cadastro de novas entradas</h5>
+        <form class="col s12">
+            <div class="row">
+
+                <div class="input-field col s4">
+                    <input id="descricao" type="text" class="validate" (click)="carregaEmpresas()">
+                    <label for="descricao">Descrição</label>
+                </div>
+
+                <div class="input-field col s2">
+                    <select>
+                        <option value="" disabled selected>escolha...</option>
+                        <option *ngFor="let obra of listaObras | async " [value]="obra.id">{{obra.obra}}</option>
+                    </select>
+                    <label>Obra</label>
+                </div>
+
+                <div class="input-field col s2">
+                    <select>
+                        <option value="" disabled selected>escolha...</option>
+                        <option *ngFor="let empresa of listaEmrpresasJavaGas | async" [value]="empresa.id">{{empresa.empresa}}</option>
+                    </select>
+                    <label>Empresa</label>
+                </div>               
+
+            </div>
+
+            <div class="row">
+
+                <div class="input-field col s2">
+                    <input id="valor" type="number" class="validate">
+                    <label for="valor">Valor R$</label>
+                </div>
+
+                <div class="input-field col s2">
+                    <input id="data-vencimento" type="date" class="validate">
+                    <label for="data-vencimento">Recebimento preivsto para</label>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col s2">
+                    <button class="btn waves-effect waves-light red">Salvar
+                        <i class="material-icons right">save</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        <p>{{listaObras | async | json}}</p>
+    </div>
+</div>

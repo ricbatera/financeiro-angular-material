@@ -1,0 +1,27 @@
+<div class="conteudo-lista">
+    <div class="lista">
+        <table class="highlight">
+            <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Vencimento</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let item of lista" id={{item.id}} (click)="abrirDetalhes($event)">
+                    <td style="width: 300px;">{{item.descricao}}</td>
+                    <td style="width: 150px;">{{item.valor}}</td>
+                    <td style="width: 130px;">{{item.dataVencimento}}</td>
+                    <td style="width: 80px;">{{item.status}}</td>
+                </tr>                
+
+            </tbody>
+        </table>
+    </div>
+    <div class="detalhes">
+        <router-outlet></router-outlet>
+    </div>
+</div>

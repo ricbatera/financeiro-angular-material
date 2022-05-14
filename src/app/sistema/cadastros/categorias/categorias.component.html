@@ -1,0 +1,25 @@
+<div>
+    <div class="row">
+        <form class="col s6" [formGroup]="form" (ngSubmit)="salvar()">
+            <h5>Cadastro de nova catergoria</h5>
+            <div class="row">
+                <div class="input-field col s8">
+                    <input id="nome-categoria" type="text" class="validate" formControlName="categoria"
+                    [ngClass]="validaCampo('categoria')? '': 'invalid'">
+                    <label for="nome-categoria">Nome da catergoria</label>
+                    <app-form-campo-obrigatorio [mostraErro]="validaCampo('categoria')" msg="Este campo é obrigatório">
+                    </app-form-campo-obrigatorio>
+                </div>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn waves-effect waves-light red">Salvar
+                    <i class="material-icons right">save</i>
+                </button>
+            </div>
+        </form>
+        <div class="col s6">
+            <h5>Lista de catergorias</h5>
+
+        </div>
+    </div>
+</div>
