@@ -10,21 +10,36 @@
     width: 500px;
     padding: 20px;
     color: #616161;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.12);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;    
 }
 
-.login-box h5, p{
+.login-box h2, p{
     text-align: center;
 }
-.espaco-entre-linhas{
+
+.login-e-senha{
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    margin: 30px auto;
+}
+/* .espaco-entre-linhas{
     margin-top: 40px;
 }
 .padding-campos{
     padding: 0 50px;
-}
+} */
 
 button{
     display: block;
-    width: 200px;
+    width: 300px;
     margin: 0 auto;
-    margin-top: 30px;
+    padding: 5px 0;
+}
+
+.blue{
+  background-color: var(--color-azul-claro);
 }

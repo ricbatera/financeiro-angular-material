@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { ComponentesGeraisModule } from './componentes-gerais/componentes-gerais.module';
 import { LoginModule } from './login/login.module';
 import { SistemaModule } from './sistema/sistema.module';
+import {MatInputModule} from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,9 +20,12 @@ import { SistemaModule } from './sistema/sistema.module';
     LoginModule,
     SistemaModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    // MatInputModule
   ],
   exports:[
+    // MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
