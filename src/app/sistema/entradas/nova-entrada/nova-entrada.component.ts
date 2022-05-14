@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as M from 'materialize-css';
+
 import { Observable } from 'rxjs';
 import { EmpresasJavaGas } from 'src/app/model/empresas-javagas';
 import { Obra } from 'src/app/model/Obra';
@@ -24,7 +24,7 @@ export class NovaEntradaComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    $(() =>$('select').formSelect());
+   
   }
   
   carregaEmpresas(){

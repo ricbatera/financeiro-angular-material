@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import * as M from 'materialize-css';
 import { CategoriasService } from 'src/app/massas-dados/categorias.service';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DatabaseServiceService } from 'src/app/services/database-service.service';
@@ -43,9 +42,8 @@ export class NovaSaidaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    $(() => { $('select').formSelect() });
     this.empresasJavaList = this.db.listarEmpresasJavaGas();
-    // this.categoriasList = this.db.listarCategorias();
+    this.categoriasList = this.db.listarCategorias();
     // this.listarTeste();
     //this.listarTeste2();
 
