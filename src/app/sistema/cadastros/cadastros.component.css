@@ -4,3 +4,8 @@ mat-drawer-container{
 mat-drawer{
   padding:10px 25px;
 }
+
+mat-drawer a{
+  width: 150px;
+  margin: 5px 0;
+}

@@ -1,45 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { categoria } from 'src/app/model/categoria';
 import { DatabaseServiceService } from 'src/app/services/database-service.service';
-
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Obra } from 'src/app/model/Obra';
 
 @Component({
-  selector: 'app-categorias',
-  templateUrl: './categorias.component.html',
-  styleUrls: ['./categorias.component.css']
+  selector: 'app-obras',
+  templateUrl: './obras.component.html',
+  styleUrls: ['./obras.component.css']
 })
-export class CategoriasComponent implements OnInit {
-  listaCategorias: categoria[] = [];
-  displayedColumns = ['id', 'categoria'];
-  // listaCategorias?: Observable<categoria[]>
+export class ObrasComponent implements OnInit {
+
+  listaObras: Obra[] = [];
+  displayedColumns = ['id', 'obra'];
 
   form: FormGroup = this.fb.group({
-    categoria:[null, Validators.required]
+    obra:[null, Validators.required]
   })
 
   constructor(
     private fb: FormBuilder,
     private db: DatabaseServiceService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-    // this.listaCategorias = this.db.listarCategorias();
-    this.carregaCategorias();
+    this.carregaObra();
   }
 
- 
-  carregaCategorias(){
-    this.db.listarCategorias().subscribe(res=>{
-      this.listaCategorias = res;
+  carregaObra(){
+    this.db.listarTodasObrasAtivas().subscribe(res=>{
+      this.listaObras = res;
     })
   }
 
   salvar(){
     if(this.form.valid){      
-      this.db.novaCategoria(this.form.value).subscribe(res=>{
-        this.carregaCategorias();
+      this.db.novaObra(this.form.value).subscribe(res=>{
+        this.carregaObra();
         this.limparForm();
       }, error=>{
         console.log(error)

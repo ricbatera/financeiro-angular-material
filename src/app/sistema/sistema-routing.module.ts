@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CadastrosComponent } from './cadastros/cadastros.component';
 import { CategoriasComponent } from './cadastros/categorias/categorias.component';
+import { ObrasComponent } from './cadastros/obras/obras.component';
 import { EntradasComponent } from './entradas/entradas.component';
 import { ListaEntradasComponent } from './entradas/lista-entradas/lista-entradas.component';
 import { NovaEntradaComponent } from './entradas/nova-entrada/nova-entrada.component';
@@ -22,7 +23,8 @@ const routes: Routes = [
         ]
       },
       {path: 'cadastros', component: CadastrosComponent, children:[
-        {path: 'categorias', component: CategoriasComponent}
+        {path: 'categorias', component: CategoriasComponent},
+        {path: 'obras', component: ObrasComponent}
       ]},
       {path: 'entradas', component: EntradasComponent, children:[
         {path: 'lista-entrada', component: ListaEntradasComponent},

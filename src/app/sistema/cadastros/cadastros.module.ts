@@ -6,6 +6,7 @@ import { CadastrosRoutingModule } from './cadastros-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormCampoObrigatorioComponent } from 'src/app/componentes-gerais/form-campo-obrigatorio/form-campo-obrigatorio.component';
 import { ComponentesGeraisModule } from 'src/app/componentes-gerais/componentes-gerais.module';
+import { ObrasComponent } from './obras/obras.component';
 
 //componentes material
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -21,7 +22,8 @@ import {MatNativeDateModule} from '@angular/material/core';
 @NgModule({
   declarations: [
     CadastrosComponent,
-    CategoriasComponent
+    CategoriasComponent,
+    ObrasComponent
   ],
   imports: [
     CommonModule,

@@ -1,11 +1,11 @@
-<div class="categorias">
+<div class="obras">
     <div class="novo">
         <form [formGroup]="form" (ngSubmit)="salvar()">
-            <h3>Cadastro de nova catergoria</h3>
+            <h3>Cadastro de nova obra</h3>
             <mat-form-field appearance="outline">
-                <mat-label>Nome da Categoria</mat-label>
-                <input type="text" matInput formControlName="categoria">
-                <mat-error *ngIf="!validaCampo('categoria')">
+                <mat-label>Nome da Obra</mat-label>
+                <input type="text" matInput formControlName="obra">
+                <mat-error *ngIf="!validaCampo('obra')">
                     Este campo é <strong>obrigatório</strong>
                 </mat-error>
             </mat-form-field><br>
@@ -14,16 +14,16 @@
         
     </div>
     <div class="listagem">
-        <h3>Lista de categorias</h3>
+        <h3>Lista de Obras</h3>
         <div class="largura-tabela mat-elevation-z8">
-            <table mat-table [dataSource]="listaCategorias">
+            <table mat-table [dataSource]="listaObras">
                 <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef>ID</th>
                     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
                 </ng-container>
-                <ng-container matColumnDef="categoria">
-                    <th mat-header-cell *matHeaderCellDef>Categoria</th>
-                    <td mat-cell *matCellDef="let element"> {{element.categoria}} </td>
+                <ng-container matColumnDef="obra">
+                    <th mat-header-cell *matHeaderCellDef>Obra</th>
+                    <td mat-cell *matCellDef="let element"> {{element.obra}} </td>
                 </ng-container>                
                 <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
