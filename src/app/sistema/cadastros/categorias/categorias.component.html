@@ -1,25 +1,50 @@
-<div>
-    <div class="row">
-        <form class="col s6" [formGroup]="form" (ngSubmit)="salvar()">
-            <h5>Cadastro de nova catergoria</h5>
-            <div class="row">
-                <div class="input-field col s8">
-                    <input id="nome-categoria" type="text" class="validate" formControlName="categoria"
-                    [ngClass]="validaCampo('categoria')? '': 'invalid'">
-                    <label for="nome-categoria">Nome da catergoria</label>
-                    <app-form-campo-obrigatorio [mostraErro]="validaCampo('categoria')" msg="Este campo é obrigatório">
-                    </app-form-campo-obrigatorio>
-                </div>
-            </div>
-            <div class="row">
-                <button type="submit" class="btn waves-effect waves-light red">Salvar
-                    <i class="material-icons right">save</i>
-                </button>
-            </div>
+<div class="categorias">
+    <div class="novo">
+        <form [formGroup]="form" (ngSubmit)="salvar()">
+            <h3>Cadastro de nova catergoria</h3>
+            <mat-form-field appearance="outline">
+                <mat-label>Nome da Categoria</mat-label>
+                <input type="text" matInput formControlName="categoria">
+                <mat-error *ngIf="!validaCampo('categoria')">
+                    Este campo é <strong>obrigatório</strong>
+                </mat-error>
+            </mat-form-field><br>
+            <button type="submit" mat-raised-button color="primary">Salvar <mat-icon>save</mat-icon></button>
         </form>
-        <div class="col s6">
-            <h5>Lista de catergorias</h5>
-
+        <!-- <p>{{form | json}}</p> -->
+    </div>
+    <div class="listagem">
+        <h3>Lista de categorias</h3>
+        <div class="largura-tabela mat-elevation-z8">
+            <table mat-table [dataSource]="listaCategorias">
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef>ID</th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+                <ng-container matColumnDef="categoria">
+                    <th mat-header-cell *matHeaderCellDef>Categoria</th>
+                    <td mat-cell *matCellDef="let element"> {{element.categoria}} </td>
+                </ng-container>                
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
         </div>
+
+        <!-- <div class="mat-elevation-z8">
+            <mat-table [dataSource]="listaCategorias">
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="categoria">
+                    <mat-header-cell *matHeaderCellDef>Categoria</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.categoria}} </mat-cell>
+                </ng-container>                
+                <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                <mat-row matRipple *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+        </div>
+         -->
+        <!-- <p>{{listaCategorias | json}}</p> -->
     </div>
 </div>

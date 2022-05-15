@@ -7,6 +7,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormCampoObrigatorioComponent } from 'src/app/componentes-gerais/form-campo-obrigatorio/form-campo-obrigatorio.component';
 import { ComponentesGeraisModule } from 'src/app/componentes-gerais/componentes-gerais.module';
 
+//componentes material
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input'; 
+import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import {MatNativeDateModule} from '@angular/material/core';
+
 
 
 @NgModule({
@@ -19,7 +28,14 @@ import { ComponentesGeraisModule } from 'src/app/componentes-gerais/componentes-
     FormsModule,
     ReactiveFormsModule,
     ComponentesGeraisModule,
-    CadastrosRoutingModule
+    CadastrosRoutingModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatTableModule,
+    MatNativeDateModule
   ]
 })
 export class CadastrosModule { }

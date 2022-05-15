@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { categoria } from 'src/app/model/categoria';
 import { DatabaseServiceService } from 'src/app/services/database-service.service';
+
+
 
 @Component({
   selector: 'app-categorias',
@@ -8,6 +11,9 @@ import { DatabaseServiceService } from 'src/app/services/database-service.servic
   styleUrls: ['./categorias.component.css']
 })
 export class CategoriasComponent implements OnInit {
+  listaCategorias: categoria[] = [];
+  displayedColumns = ['id', 'categoria'];
+  // listaCategorias?: Observable<categoria[]>
 
   form: FormGroup = this.fb.group({
     categoria:[null, Validators.required]
@@ -15,29 +21,36 @@ export class CategoriasComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private db: DatabaseServiceService) { }
+    private db: DatabaseServiceService
+    ) { }
 
   ngOnInit(): void {
+    // this.listaCategorias = this.db.listarCategorias();
+    this.carregaCategorias();
+  }
+
+ 
+  carregaCategorias(){
+    this.db.listarCategorias().subscribe(res=>{
+      this.listaCategorias = res;
+    })
   }
 
   salvar(){
-    if(this.form.valid){
-      console.log("Tudo ok :)");
-      console.log(this.form.value);
-      
+    if(this.form.valid){      
       this.db.novaCategoria(this.form.value).subscribe(res=>{
-        console.log(res)
+        this.carregaCategorias();
+        this.limparForm();
       }, error=>{
         console.log(error)
       })
     }else{
+      console.log('chegou aqui')
       Object.keys(this.form.controls).forEach(e=>{
         const campo: any = this.form.get(e);
         campo.markAsTouched();
-      })
-           
+      })           
     }
-    console.log(this.form);
   }
 
   validaCampo(args: string){
@@ -46,6 +59,10 @@ export class CategoriasComponent implements OnInit {
       return c.valid;
     }
     return true;
+  }
+
+  limparForm() {
+    this.form.reset();
   }
 
 }
