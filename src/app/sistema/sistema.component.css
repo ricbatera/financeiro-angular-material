@@ -3,13 +3,21 @@
     margin: 0 auto;
 }
 
-a>i{
-    margin: 0 !important;
-    font-size: 1.5em;
-
+.espaco {
+    flex: 1 1 auto;
+  }
+  
+.menus{    
+    display: flex;
 }
 
-.brand-logo{
-    font-size: 1.8em;
+.menus>ul{
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    align-items: center;
 }
 
+.menus a{
+    font-size: .7em;
+}

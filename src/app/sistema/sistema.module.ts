@@ -7,6 +7,11 @@ import { CadastrosModule } from './cadastros/cadastros.module';
 import { EntradasModule } from './entradas/entradas.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+//imports do material
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button'; 
+import {MatIconModule} from '@angular/material/icon'; 
+
 @NgModule({
   declarations: [
     SistemaComponent
@@ -18,7 +23,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EntradasModule,
     FormsModule,
     ReactiveFormsModule,
-    SistemaRoutingModule
+    SistemaRoutingModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    
   ],
   exports:[
     FormsModule,
