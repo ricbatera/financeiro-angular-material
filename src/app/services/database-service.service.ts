@@ -56,6 +56,10 @@ export class DatabaseServiceService {
     return this.httpClient.get<any[]>(`${this.API_URL}saida/listarMensal?dataBase=${this.hoje}`);
   }
 
+  getSaidaById(id:number): Observable<any> {
+    return this.httpClient.get<any>(`${this.API_URL}saida/${id}`);
+  }
+
 
   // Manipulação de erros
   handleError(error: HttpErrorResponse) {

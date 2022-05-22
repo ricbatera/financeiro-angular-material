@@ -34,7 +34,7 @@
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="abrirDetalhes(row.id)"></tr>
 
                 <tr class="mat-row" *matNoDataRow>
                     <td class="mat-cell" colspan="3">Desculpe, não econtramos nada com "{{input.value}}"</td>
@@ -44,35 +44,6 @@
         </div>
     </div>
     <div class="detalhes">
-
-    </div>
-</div>
-
-
-<div style="display: none;">
-    <div>
-        <table class="highlight">
-            <thead>
-                <tr>
-                    <th>Descrição</th>
-                    <th>Valor</th>
-                    <th>Vencimento</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <tr *ngFor="let item of lista" id={{item.id}} (click)="abrirDetalhes($event)">
-                    <td style="width: 300px;">{{item.descricao}}</td>
-                    <td style="width: 150px;">{{item.valor}}</td>
-                    <td style="width: 130px;">{{item.dataVencimento}}</td>
-                    <td style="width: 80px;">{{item.status}}</td>
-                </tr>
-
-            </tbody>
-        </table>
-    </div>
-    <div>
         <router-outlet></router-outlet>
     </div>
 </div>

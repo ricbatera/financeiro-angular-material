@@ -12,9 +12,8 @@
     width: 100%;
 }
 
-.area-click{
+tr{
     cursor: pointer;
-    /* padding: 0 10px; */
 }
 
 mat-form-field{

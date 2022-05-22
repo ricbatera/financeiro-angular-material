@@ -17,7 +17,6 @@ import {SaidaForList} from 'src/app/model/SaidaForList';
 })
 export class ListaSaidasComponent {
   displayedColumns: string[] = ['descricao', 'vencimento', 'valor', 'situacao', 'acao'];
-  listaSaidas?: SaidaForList[];
   dataSource!: MatTableDataSource<SaidaForList>;
   
 
@@ -52,8 +51,6 @@ export class ListaSaidasComponent {
 
   carregaListaSaidas(){
     this.db.listarSaidasMensal().subscribe(res=>{
-      console.log(res);
-      this.listaSaidas = res;
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
@@ -71,7 +68,7 @@ export class ListaSaidasComponent {
     }
   }
 
-  abrirDetalhes(ev:any){
-    this.route.navigate([`sistema/saidas/lista/detalhes/${ev.path[1].id}`])
+  abrirDetalhes(ev:any){    
+    this.route.navigate([`sistema/saidas/lista-saida/detalhes/${ev}`])
   }
 }

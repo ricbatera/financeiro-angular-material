@@ -1,7 +1,44 @@
-h5{
-    text-align: center;
+.content {
+    width: 93%;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
-.espaco{
-    padding-left: 10px;
+.card {
+    width: 100%;
+}
+
+.detalhes {
+    display: flex;
+    gap: 30px;
+}
+
+.caixa {
+    min-width: 10px;
+}
+
+.aberto {
+    color: orange;
+    font-weight: 450;
+}
+
+.atrasado {
+    color: red;
+    font-weight: 450;
+}
+
+.pago {
+    color: green;
+    font-weight: 450;
+}
+
+table {
+    width: 100%;
+}
+
+.tabela{
+    margin-top: 15px;   
+    max-height: 500px;
+    overflow: auto;
 }

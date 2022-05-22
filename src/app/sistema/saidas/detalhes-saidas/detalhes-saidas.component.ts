@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { SaidaService } from 'src/app/massas-dados/saida.service';
+import { DatabaseServiceService } from 'src/app/services/database-service.service';
 
 @Component({
   selector: 'app-detalhes-saidas',
@@ -8,27 +10,25 @@ import { SaidaService } from 'src/app/massas-dados/saida.service';
   styleUrls: ['./detalhes-saidas.component.css']
 })
 export class DetalhesSaidasComponent implements OnInit {
-  id = 0;
-  lista: any[] = [];
-  itemSelecionado: any;
+  // id = 0;
+  displayedColumns = ['valorEsperado', 'valorEfetivo', 'dataVencimento', 'dataPagamento', 'status'];
+  saida:any;
 
   constructor(
     private parametros: ActivatedRoute,
-    private mock: SaidaService
+    private db: DatabaseServiceService
   ) { }
 
   ngOnInit(): void {
-    this.lista = this.mock.gerarSaidas(20);
     this.parametros.params.subscribe(parametros=>{
-      this.id = parametros['id'];
-      this.recarrega(this.id);
-    })
+      // this.id = parametros['id'];    
+      this.db.getSaidaById(parametros['id']).subscribe(res=>{
+        this.saida = res;
+      })
+    });
+
   }
 
-  recarrega(v:any){
-    this.itemSelecionado = this.lista[v]
-    console.log(this.itemSelecionado);
-    console.log(v);
-  }
+ 
 
 }

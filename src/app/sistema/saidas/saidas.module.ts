@@ -21,7 +21,9 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-import {MatTooltipModule} from '@angular/material/tooltip'; 
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider'; 
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatSelectModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCardModule,
+    MatDividerModule
   ],
   providers: [SaidaService],
 })
