@@ -36,8 +36,7 @@ export class NovaSaidaComponent implements OnInit {
       custoMensal: [null, [Validators.required]],
       dataVencimento: [null, [Validators.required]],
       obs: [null, [Validators.required]],
-      pago: [null, [Validators.required]],
-      teste: [null, Validators.required]
+      pago: [null, [Validators.required]]
     });
   }
 
@@ -65,7 +64,10 @@ export class NovaSaidaComponent implements OnInit {
 
   salvar() {
     if (this.formulario?.valid) {
-      console.log("Tudo ok :)")
+      this.db.novaSaida(this.formulario.value).subscribe(res=>{
+        alert ("salvo com sucesso")
+      })
+      this.limparForm();
     } else {
       Object.keys(this.formulario.controls).forEach(e => {
         const campo: any = this.formulario?.get(e);
@@ -91,12 +93,9 @@ export class NovaSaidaComponent implements OnInit {
 
   parceladoChange(arg: string, arg2: string) {
     const parcelado: any = this.formulario.get(arg);
-    if (parcelado.value == "true") {
-      this.formulario.get(arg2)?.reset({ value: null, disabled: false })
-      // qtdeParcelas?.disable({onlySelf:false});
+    if (parcelado.value) {
+      this.formulario.get(arg2)?.reset({ value: null, disabled: false });
     } else {
-      // qtdeParcelas?.setValue(1);
-      // qtdeParcelas?.reset({value: 1})
       this.formulario?.get(arg2)?.setValue(1);
     }
   }

@@ -10,6 +10,16 @@ import { NovaSaidaComponent } from './nova-saida/nova-saida.component';
 import { ComponentesGeraisModule } from 'src/app/componentes-gerais/componentes-gerais.module';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 
+//componentes material
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input'; 
+import {MatIconModule} from '@angular/material/icon';
+import {MatTableModule} from '@angular/material/table';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -24,7 +34,15 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     ReactiveFormsModule,
     ComponentesGeraisModule,
     CurrencyMaskModule,
-    SaidasRoutingModule
+    SaidasRoutingModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatTableModule,
+    MatNativeDateModule,
+    MatSelectModule
   ],
   providers: [SaidaService],
 })

@@ -1,138 +1,151 @@
-<h5>Cadastro de nova saída</h5>
-<div class="row">
-    <form class="col s12" [formGroup]="formulario" (ngSubmit)="salvar()">
-        <div class="row">
-            <div class="input-field col s4">
-                <input id="descricao" type="text" formControlName="descricao" class="validate" (blur)="listarTeste2()"
-                    [ngClass]="validaCampo('descricao')? '': 'invalid'">
-                <label for="descricao">Descrição</label>
-                <app-form-campo-obrigatorio [mostraErro]="validaCampo('descricao')" msg="Este campo é obrigatório">
-                </app-form-campo-obrigatorio>
+<div class="container-geral">
+    <form [formGroup]="formulario" (ngSubmit)="salvar()">
+        <h3>Cadastro de nova saída</h3>
+        <div class="linha">
+            <div class="col4">
+                <mat-form-field appearance="outline">
+                    <mat-label>Descrição</mat-label>
+                    <input type="text" matInput formControlName="descricao">
+                    <mat-error *ngIf="!validaCampo('descricao')">
+                        Este campo é <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
             </div>
-            <div class="input-field col s2">
-                <select formControlName="empresaId" class="validate"
-                    [ngClass]="validaCampo('empresaId')? '': 'invalid'">
-                    <option value="" disabled selected>escolha...</option>
-                    <option *ngFor="let empresa of empresasJavaList | async" [ngValue]="empresa.id">{{empresa.empresa}}</option>
-                </select>
-                <label>Empresa</label>
-                <app-form-campo-obrigatorio [mostraErro]="validaCampo('empresaId')" msg="Escolha uma opção.">
-                </app-form-campo-obrigatorio>
+            <div class="col2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Empresa</mat-label>
+                    <mat-select matInput formControlName="empresaId">
+                        <mat-option *ngFor="let empresa of empresasJavaList | async" [value]="empresa.id">
+                            {{empresa.empresa}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!validaCampo('empresaId')">
+                        Este campo é <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
             </div>
-            <div class="input-field col s2">
-                <select formControlName="categoriaId" class="validate"
-                    [ngClass]="validaCampo('categoriaId')? '': 'invalid'">
-                    <option value="" disabled selected>escolha uma categoria...</option>
-                    <option *ngFor="let item of categoriasList | async" [ngValue]="item.id">{{item.categoria}}</option>
-                </select>
-                <label>Catergoria</label>
-                <app-form-campo-obrigatorio [mostraErro]="validaCampo('categoriaId')" msg="Escolha uma categoria.">
-                </app-form-campo-obrigatorio>
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s1">
-                <select formControlName="parcelado" (change)="parceladoChange('parcelado', 'qtdeParcelas')">
-                    <option value="" disabled selected>escolha...</option>
-                    <option value=true>Sim</option>
-                    <option value=false>Não</option>
-                </select>
-                <label>Parcelado?</label>
-                <app-form-campo-obrigatorio [mostraErro]="validaCampo('parcelado')" msg="Defina se é parcelado ou não.">
-                </app-form-campo-obrigatorio>
-            </div>
-
-            <div class="input-field col s1">
-                <input id="qtde-parcelas" type="number" class="validate" formControlName="qtdeParcelas"
-                    [ngClass]="validaCampo('qtdeParcelas')? '': 'invalid'">
-                <label class="active" for="qtde-parcelas">Quantidade</label>
-                <app-form-campo-obrigatorio [mostraErro]="validaCampo('qtdeParcelas')" msg="Este campo é obrigatório">
-                </app-form-campo-obrigatorio>
-            </div>
-            <div class="input-field col s1">
-                <input id="valor" type="text" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', suffix: '' }"
-                    class="validate" formControlName="valorEsperado" [ngClass]="validaCampo('valorEsperado')? '': 'invalid'">
-                <label for="valor">Valor</label>
-                <app-form-campo-obrigatorio [mostraErro]="validaCampo('valorEsperado')" msg="Este campo é obrigatório">
-                </app-form-campo-obrigatorio>
-            </div>
-
-            <div class="input-field col s1">
-                <select formControlName="custoMensal">
-                    <option value="" disabled selected>escolha...</option>
-                    <option value=true>Sim</option>
-                    <option value=false>Não</option>
-                </select>
-                <label>Custo mensal?</label>
-                <app-form-campo-obrigatorio [mostraErro]="validaCampo('custoMensal')" msg="Este campo é obrigatório">
-                </app-form-campo-obrigatorio>
-            </div>
-
-            <div class="input-field col s1">
-                <select formControlName="pago">
-                    <option value="" disabled selected>escolha...</option>
-                    <option value=true>Sim</option>
-                    <option value=false>Não</option>
-                </select>
-                <label>Marcar como pago?</label>
-                <app-form-campo-obrigatorio [mostraErro]="validaCampo('custoMensal')" msg="Este campo é obrigatório">
-                </app-form-campo-obrigatorio>
-            </div>
-
-            <div class="input-field col s1">
-                <select formControlName="custoImprevisto">
-                    <option value="" disabled selected>escolha...</option>
-                    <option value=true>Sim</option>
-                    <option value=false>Não</option>
-                </select>
-                <label>Custo Imprevisto?</label>
-                <app-form-campo-obrigatorio [mostraErro]="validaCampo('custoImprevisto')"
-                    msg="Este campo é obrigatório"></app-form-campo-obrigatorio>
-            </div>
-
-            <div class="input-field col s2">
-                <input id="data-vencimento" type="date" class="validate" formControlName="dataVencimento"
-                    [ngClass]="formulario.get('dataVencimento')? '': 'invalid'">
-                <label for="data-vencimento">Vencimento</label>
-                <app-form-campo-obrigatorio [mostraErro]="validaCampo('dataVencimento')" msg="Este campo é obrigatório">
-                </app-form-campo-obrigatorio>
+            <div class="col2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Catergoria</mat-label>
+                    <mat-select matInput formControlName="categoriaId">
+                        <mat-option *ngFor="let categoria of categoriasList | async" [value]="categoria.id">
+                            {{categoria.categoria}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!validaCampo('categoriaId')">
+                        Este campo é <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
             </div>
         </div>
-        <div class="row">
-            <div class="input-field col s8">
-                <textarea id="obs" class="materialize-textarea" formControlName="obs"
-                    [ngClass]="validaCampo('obs')? '': 'invalid'"></textarea>
-                <label for="obs">Observações</label>
-                <app-form-campo-obrigatorio [mostraErro]="validaCampo('obs')" msg="Este campo é obrigatório">
-                </app-form-campo-obrigatorio>
+
+        <div class="linha">
+            <div class="col1">
+                <mat-form-field appearance="outline">
+                    <mat-label>Parcelado</mat-label>
+                    <mat-select matInput formControlName="parcelado"
+                        (selectionChange)="parceladoChange('parcelado', 'qtdeParcelas')">
+                        <mat-option [value]=true>Sim</mat-option>
+                        <mat-option [value]=false>Não</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!validaCampo('parcelado')">
+                        Campo <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col1">
+                <mat-form-field appearance="outline">
+                    <mat-label>Quantidade</mat-label>
+                    <input type="number" matInput formControlName="qtdeParcelas">
+                    <mat-error *ngIf="!validaCampo('qtdeParcelas')">
+                        Campo <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Valor</mat-label>
+                    <input type="text" matInput currencyMask
+                        [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', suffix: '' }"
+                        formControlName="valorEsperado">
+                    <mat-error *ngIf="!validaCampo('valorEsperado')">
+                        Campo <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col1">
+                <mat-form-field appearance="outline">
+                    <mat-label>Vencimento</mat-label>
+                    <input type="date" matInput formControlName="dataVencimento">
+                    <mat-error *ngIf="!validaCampo('dataVencimento')">
+                        Campo <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col1">
+                <mat-form-field appearance="outline">
+                    <mat-label>Pago?</mat-label>
+                    <mat-select matInput formControlName="pago">
+                        <mat-option [value]=true>Sim</mat-option>
+                        <mat-option [value]=false>Não</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!validaCampo('pago')">
+                        Campo <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col1">
+                <mat-form-field appearance="outline">
+                    <mat-label>Mensal?</mat-label>
+                    <mat-select matInput formControlName="custoMensal">
+                        <mat-option [value]=true>Sim</mat-option>
+                        <mat-option [value]=false>Não</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!validaCampo('custoMensal')">
+                        Campo <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div class="col1">
+                <mat-form-field appearance="outline">
+                    <mat-label>Gasto Imprevisto</mat-label>
+                    <mat-select matInput formControlName="custoImprevisto">
+                        <mat-option [value]=true>Sim</mat-option>
+                        <mat-option [value]=false>Não</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!validaCampo('custoImprevisto')">
+                        Campo <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+        </div>
+        <div class="linha">
+            <div class="col8">
+                <mat-form-field appearance="outline">
+                    <mat-label>Observações</mat-label>
+                    <textarea matInput formControlName="obs"></textarea>
+                </mat-form-field>
+                <mat-error *ngIf="!validaCampo('obs')">
+                    Este campo é <strong>obrigatório</strong>
+                </mat-error>
             </div>
         </div>
-        <div class="row">
-            <div class="input-field col s2">
-                <select formControlName="teste" class="validate"
-                    [ngClass]="validaCampo('teste')? '': 'invalid'">
-                    <option value="" disabled selected>escolha...</option>
-                    <option *ngFor="let cat of empresasJavaList | async" [ngValue]="cat.id">{{cat.empresa}}</option>
-                </select>
-                <label>Empresa</label>
-                <app-form-campo-obrigatorio [mostraErro]="validaCampo('teste')" msg="Escolha uma opção.">
-                </app-form-campo-obrigatorio>
+
+        <div class="linha">
+            <div class="col1">
+                <button type="submit" mat-raised-button color="primary">Salvar <mat-icon>save</mat-icon></button>
             </div>
         </div>
-        <div class="row">
-            <button type="submit" class="btn waves-effect waves-light red">Salvar
-                <i class="material-icons right">save</i>
-            </button>
-        </div>
+
     </form>
-    <div class="row">
-        <div class="col s12">
-            <p>{{empresasJavaList | async | json}}</p>
-            <p>{{categoriasList | async | json}}</p>
-            <!-- <p *ngFor="let item of categoriasList$ | async">{{item.categoria}}</p> -->
-        </div>
-        <div class="col s12">
-            {{formulario.value | json}}
-        </div>
+    <div>
+        {{formulario.value | json}}
     </div>
 </div>
+
+<!--  -->

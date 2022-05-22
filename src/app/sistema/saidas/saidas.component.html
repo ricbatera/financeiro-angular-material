@@ -1,11 +1,8 @@
-<div class="estrutura">
-    <div class="my-sidebar">
-        <div class="collection">
-            <a routerLink="lista" class="collection-item active">Lista de Saídas</a>
-            <a routerLink="nova-saida" class="collection-item">Nova Saida</a>
-        </div>
-    </div>
-    <div class="conteudo">
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened>
+        <a mat-stroked-button routerLink="nova-saida">Nova Saída</a><br>
+    </mat-drawer>
+    <mat-drawer-content>
         <router-outlet></router-outlet>
-    </div>
-</div>
+    </mat-drawer-content>
+  </mat-drawer-container>

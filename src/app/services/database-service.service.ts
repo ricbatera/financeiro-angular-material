@@ -15,6 +15,11 @@ export class DatabaseServiceService {
 
   API_URL = environment.URLSERVIDOR;
 
+  d = new Date();
+  e = this.d.toDateString();
+  f = new Date(this.e);
+  hoje = this.f.toISOString().substring(0,10);
+
   constructor(private httpClient: HttpClient) { }
 
   // Headers
@@ -30,6 +35,10 @@ export class DatabaseServiceService {
     return this.httpClient.post<any>(this.API_URL+"cadastro/obra", JSON.stringify(payload), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError))
   }
+  novaSaida(payload: any): Observable<any> {
+    return this.httpClient.post<any>(this.API_URL+"saida/nova-saida", JSON.stringify(payload), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError))
+  }
 
   listarCategorias(): Observable<categoria[]> {
     return this.httpClient.get<categoria[]>(this.API_URL + "cadastro/categoria/listar");
@@ -41,6 +50,10 @@ export class DatabaseServiceService {
 
   listarTodasObrasAtivas(): Observable<Obra[]>{
     return this.httpClient.get<Obra[]>(this.API_URL + "cadastro/obra/listar");
+  }
+
+  listarSaidasMensal(): Observable<any[]>{
+    return this.httpClient.get<any[]>(`${this.API_URL}/saida/listarMensal${this.hoje}`);
   }
 
 
