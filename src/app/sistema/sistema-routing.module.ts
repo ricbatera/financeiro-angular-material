@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: 'sistema', component: SistemaComponent, children: [
       {path: 'saidas', component: SaidasComponent, children: [
-          {path: 'lista', component: ListaSaidasComponent, children: [
+          {path: 'lista-saida', component: ListaSaidasComponent, children: [
             {path:'detalhes/:id', component: DetalhesSaidasComponent}    
           ]},
           {path: 'nova-saida', component: NovaSaidaComponent}

@@ -11,6 +11,11 @@ import { SistemaModule } from './sistema/sistema.module';
 import {MatInputModule} from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import ptBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(ptBr);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     // MatInputModule
   ],
   providers: [
-    {provide: LOCALE_ID, useValue:'pt-BR'}
+    {provide: LOCALE_ID, useValue:'pt'}
   ],
   bootstrap: [AppComponent]
 })

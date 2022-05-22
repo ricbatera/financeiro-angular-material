@@ -53,7 +53,7 @@ export class DatabaseServiceService {
   }
 
   listarSaidasMensal(): Observable<any[]>{
-    return this.httpClient.get<any[]>(`${this.API_URL}/saida/listarMensal${this.hoje}`);
+    return this.httpClient.get<any[]>(`${this.API_URL}saida/listarMensal?dataBase=${this.hoje}`);
   }
 
 

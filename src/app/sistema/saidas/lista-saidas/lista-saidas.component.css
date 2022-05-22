@@ -5,12 +5,28 @@
 }
 .lista{
     width: 100%;
+    margin-left: 5px;
 }
 
 .detalhes{
     width: 100%;
 }
 
-tr{
+.area-click{
     cursor: pointer;
+    /* padding: 0 10px; */
 }
+
+mat-form-field{
+    margin-top: 15px;
+    font-size: 1.3em;
+    width: 100%;
+}
+
+table{
+    width: 100%;
+}
+
+td, th {
+    width: 25%;
+  }

@@ -19,6 +19,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTooltipModule} from '@angular/material/tooltip'; 
 
 
 @NgModule({
@@ -42,7 +45,10 @@ import {MatSelectModule} from '@angular/material/select';
     MatIconModule,
     MatTableModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTooltipModule
   ],
   providers: [SaidaService],
 })
