@@ -5,6 +5,8 @@ import { DatabaseServiceService } from 'src/app/services/database-service.servic
 import { categoria } from 'src/app/model/categoria';
 import { Observable } from 'rxjs';
 import { EmpresasJavaGas } from 'src/app/model/empresas-javagas';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-nova-saida',
   templateUrl: './nova-saida.component.html',
@@ -22,7 +24,9 @@ export class NovaSaidaComponent implements OnInit {
   constructor(
     private categorias: CategoriasService,
     private formBuilder: FormBuilder,
-    private db: DatabaseServiceService
+    private db: DatabaseServiceService,
+    private route: Router,
+    private _snackBar: MatSnackBar
   ) {
 
     this.formulario = this.formBuilder.group({
@@ -63,15 +67,18 @@ export class NovaSaidaComponent implements OnInit {
   }
 
   salvar() {
+
     if (this.formulario?.valid) {
       this.db.novaSaida(this.formulario.value).subscribe(res=>{
-        alert ("salvo com sucesso")
+        this._snackBar.open('Salvo com sucesso', 'Ok', {duration: 2000})
+        this.route.navigate([`sistema/saidas/lista-saida`])
       })
-      this.limparForm();
+      // this.limparForm();
     } else {
       Object.keys(this.formulario.controls).forEach(e => {
         const campo: any = this.formulario?.get(e);
         campo.markAsTouched();
+        this._snackBar.open('Preencha todos os campos obrigatórios do formulário!', 'Fechar', {duration: 3000})
       })
     }
     console.log(this.formulario);
