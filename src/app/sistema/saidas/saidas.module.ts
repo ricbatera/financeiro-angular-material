@@ -4,7 +4,7 @@ import { SaidasRoutingModule } from './saidas-routing.module';
 import { SaidasComponent } from './saidas.component';
 import { ListaSaidasComponent } from './lista-saidas/lista-saidas.component';
 import { SaidaService } from 'src/app/massas-dados/saida.service';
-import { DetalhesSaidasComponent } from './detalhes-saidas/detalhes-saidas.component';
+import { DetalhesSaidasComponent, DialogSalvar } from './detalhes-saidas/detalhes-saidas.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NovaSaidaComponent } from './nova-saida/nova-saida.component';
 import { ComponentesGeraisModule } from 'src/app/componentes-gerais/componentes-gerais.module';
@@ -24,7 +24,8 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
-import {MatSnackBarModule} from '@angular/material/snack-bar'; 
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog'; 
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     SaidasComponent,
     ListaSaidasComponent,
     DetalhesSaidasComponent,
-    NovaSaidaComponent
+    NovaSaidaComponent,
+    DialogSalvar
   ],
   imports: [
     CommonModule,
@@ -54,7 +56,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatTooltipModule,
     MatCardModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [SaidaService],
 })

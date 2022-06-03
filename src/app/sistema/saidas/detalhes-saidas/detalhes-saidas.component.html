@@ -38,7 +38,7 @@
         </mat-card-content>
         <mat-divider inset></mat-divider>
         <mat-card-actions>
-            <button mat-button>PAGAR</button>
+            <button mat-button (click)="openDialogSalvar()">PAGAR</button>
             <button mat-button>EDITAR</button>
         </mat-card-actions>
         <!-- <mat-card-footer>
@@ -79,4 +79,4 @@
         </table>
     </mat-card>
 </div>
-<!-- <p>{{saida | json}}</p> -->
+<p>{{saida.parcelaAtual | json}}</p>

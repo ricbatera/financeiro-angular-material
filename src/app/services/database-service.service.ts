@@ -39,6 +39,10 @@ export class DatabaseServiceService {
     return this.httpClient.post<any>(this.API_URL+"saida/nova-saida", JSON.stringify(payload), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError))
   }
+  pagarParcela(payload: any, id:number): Observable<any> {
+    return this.httpClient.put<any>(this.API_URL+"saida/pagar-parcela/"+id, JSON.stringify(payload), this.httpOptions)
+      .pipe(retry(2), catchError(this.handleError))
+  }
 
   listarCategorias(): Observable<categoria[]> {
     return this.httpClient.get<categoria[]>(this.API_URL + "cadastro/categoria/listar");
