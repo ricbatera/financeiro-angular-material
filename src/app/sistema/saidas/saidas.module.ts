@@ -25,7 +25,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatDialogModule} from '@angular/material/dialog'; 
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonToggleModule} from '@angular/material/button-toggle'
 
 
 @NgModule({
@@ -57,7 +58,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatCardModule,
     MatDividerModule,
     MatSnackBarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonToggleModule
   ],
   providers: [SaidaService],
 })

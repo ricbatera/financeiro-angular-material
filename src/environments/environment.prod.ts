@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  URLSERVIDOR: 'http://sistema.rdrtech.com.br:8080/'  
+  URLSERVIDOR: 'http://newjavagas.rdrtech.com.br:8080/'
+  // URLSERVIDOR: 'http://localhost:8080/'
 };

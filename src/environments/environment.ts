@@ -7,6 +7,7 @@ export const environment = {
   logRequest: true,
   traceRequest: true,
   URLSERVIDOR: 'http://localhost:8080/'
+  // URLSERVIDOR: 'http://newjavagas.rdrtech.com.br:8080/'
 };
 
 /*

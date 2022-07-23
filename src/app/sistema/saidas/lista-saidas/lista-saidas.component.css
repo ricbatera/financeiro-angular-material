@@ -29,3 +29,29 @@ table{
 td, th {
     width: 25%;
   }
+
+  .mensal{
+    margin:5px;
+    margin-top: 20px;
+  }
+
+  .mes{
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid rgba(0,0,0,.10);
+    margin: 1px;
+    cursor: pointer;
+    /* color: inherit; */
+  }
+
+  .mes:hover{
+    /* background-color: #FFCDD2; */
+    transition: all ease-in 0.2s;
+    color: #fafafa;
+    background-color: #D32F2F;
+  }
+
+  .mes-selecionado{
+    color: #fafafa;
+    background-color: #D32F2F;
+  }

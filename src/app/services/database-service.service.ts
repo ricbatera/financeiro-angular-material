@@ -15,11 +15,6 @@ export class DatabaseServiceService {
 
   API_URL = environment.URLSERVIDOR;
 
-  d = new Date();
-  e = this.d.toDateString();
-  f = new Date(this.e);
-  hoje = this.f.toISOString().substring(0,10);
-
   constructor(private httpClient: HttpClient) { }
 
   // Headers
@@ -56,8 +51,8 @@ export class DatabaseServiceService {
     return this.httpClient.get<Obra[]>(this.API_URL + "cadastro/obra/listar");
   }
 
-  listarSaidasMensal(): Observable<any[]>{
-    return this.httpClient.get<any[]>(`${this.API_URL}saida/listarMensal?dataBase=${this.hoje}`);
+  listarSaidasMensal(dataPesquisa: string): Observable<any[]>{
+    return this.httpClient.get<any[]>(`${this.API_URL}saida/listarMensal?dataBase=${dataPesquisa}`);
   }
 
   getSaidaById(id:number): Observable<any> {

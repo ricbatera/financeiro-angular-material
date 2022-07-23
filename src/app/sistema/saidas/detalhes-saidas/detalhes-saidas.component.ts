@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SaidaService } from 'src/app/massas-dados/saida.service';
 import { DatabaseServiceService } from 'src/app/services/database-service.service';
@@ -18,7 +18,8 @@ export class DetalhesSaidasComponent implements OnInit {
   constructor(
     private parametros: ActivatedRoute,
     private db: DatabaseServiceService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private route: Router,
   ) { }
 
   ngOnInit(): void {
@@ -26,6 +27,7 @@ export class DetalhesSaidasComponent implements OnInit {
       this.id = parametros['id'];    
       this.db.getSaidaById(parametros['id']).subscribe(res=>{
         this.saida = res;
+        console.log(res);
       })
     });
   }
@@ -37,9 +39,12 @@ export class DetalhesSaidasComponent implements OnInit {
     })
     dialogRef.afterClosed().subscribe(result => {
       this.db.pagarParcela(result, result.id).subscribe(res=>{
-        this.db.getSaidaById(this.id).subscribe(result=>{
-          this.saida = result;
-        })
+        // location.reload();
+        this.route.navigate([`sistema/saidas`])
+        this.route.navigate([`sistema/saidas/lista-saida`])
+        // this.db.getSaidaById(this.id).subscribe(result=>{
+        //   this.saida = result;
+        // })
       })
      
     });
