@@ -54,6 +54,7 @@ export class ListaSaidasComponent {
         for (let j = 0; j < this.listaMeses.length; j++) {
           this.listaMeses[j].classList.remove('mes-selecionado')
         }
+        this.route.navigate([`sistema/saidas/lista-saida`])
         this.mesSelecionado = this.listaMeses[i].id;
         this.listaMeses[i].classList.add('mes-selecionado');
         this.carregaListaMesSelecionado();

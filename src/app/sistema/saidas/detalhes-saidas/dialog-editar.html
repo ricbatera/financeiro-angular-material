@@ -1,0 +1,73 @@
+<h1 mat-dialog-title>Editar</h1>
+<div mat-dialog-content>
+    <form [formGroup]="formulario">
+        <mat-form-field appearance="outline" style="width: 95%;">
+            <mat-label>Descrição</mat-label>
+            <input type="text" matInput formControlName="descricao">
+            <mat-error *ngIf="!validaCampo('descricao')">
+                Este campo é <strong>obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Empresa</mat-label>
+            <mat-select matInput formControlName="empresaId">
+                <mat-option *ngFor="let empresa of empresasJavaList | async" [value]="empresa.id">
+                    {{empresa.empresa}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="!validaCampo('empresaId')">
+                Este campo é <strong>obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="margin-left: 10px;">
+            <mat-label>Catergoria</mat-label>
+            <mat-select matInput formControlName="categoriaId">
+                <mat-option *ngFor="let categoria of categoriasList | async" [value]="categoria.id">
+                    {{categoria.categoria}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="!validaCampo('categoriaId')">
+                Este campo é <strong>obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 95%;">
+            <mat-label>Observações</mat-label>
+            <textarea matInput formControlName="obs"></textarea>
+        </mat-form-field>
+        <mat-error *ngIf="!validaCampo('obs')">
+            Este campo é <strong>obrigatório</strong>
+        </mat-error>
+        <mat-divider></mat-divider>
+        <h4 style="margin-top: 20px;">Detelhes da parcela atual</h4>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Vencimento</mat-label>
+            <input type="date" matInput formControlName="dataVencimento">
+            <mat-error *ngIf="!validaCampo('dataVencimento')">
+                Campo <strong>obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="margin-left: 10px;">
+            <mat-label>Valor</mat-label>
+            <input type="text" matInput currencyMask
+                [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', suffix: '' }"
+                formControlName="valorEsperado">
+            <mat-error *ngIf="!validaCampo('valorEsperado')">
+                Campo <strong>obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
+        <div>
+            <mat-checkbox class="example-margin" formControlName="atualizarValorParcelasFuturas">Atualziar o valor para as parcelas futuras</mat-checkbox>
+        </div>
+
+    </form>
+    
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Fechar</button>
+    <button mat-button [mat-dialog-close]="formulario">Salvar</button>
+</div>

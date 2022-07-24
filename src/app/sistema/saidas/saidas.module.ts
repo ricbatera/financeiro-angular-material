@@ -4,7 +4,7 @@ import { SaidasRoutingModule } from './saidas-routing.module';
 import { SaidasComponent } from './saidas.component';
 import { ListaSaidasComponent } from './lista-saidas/lista-saidas.component';
 import { SaidaService } from 'src/app/massas-dados/saida.service';
-import { DetalhesSaidasComponent, DialogSalvar } from './detalhes-saidas/detalhes-saidas.component';
+import { DetalhesSaidasComponent, DialogEditar, DialogSalvar } from './detalhes-saidas/detalhes-saidas.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NovaSaidaComponent } from './nova-saida/nova-saida.component';
 import { ComponentesGeraisModule } from 'src/app/componentes-gerais/componentes-gerais.module';
@@ -27,6 +27,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonToggleModule} from '@angular/material/button-toggle'
+import {MatCheckboxModule} from '@angular/material/checkbox'
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle'
     ListaSaidasComponent,
     DetalhesSaidasComponent,
     NovaSaidaComponent,
-    DialogSalvar
+    DialogSalvar,
+    DialogEditar
   ],
   imports: [
     CommonModule,
@@ -59,7 +61,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle'
     MatDividerModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatCheckboxModule
   ],
   providers: [SaidaService],
 })
