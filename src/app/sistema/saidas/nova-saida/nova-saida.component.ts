@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { EmpresasJavaGas } from 'src/app/model/empresas-javagas';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Obra } from 'src/app/model/Obra';
 @Component({
   selector: 'app-nova-saida',
   templateUrl: './nova-saida.component.html',
@@ -16,6 +17,7 @@ export class NovaSaidaComponent implements OnInit {
   //variáveis globais do componente
   $: any;
   categoriasList?: Observable<categoria[]>;
+  obrasList?: Observable<Obra[]>;
   empresasJavaList?: Observable<EmpresasJavaGas[]>
   listaTeste?: categoria[];
 
@@ -40,6 +42,7 @@ export class NovaSaidaComponent implements OnInit {
       custoMensal: [null, [Validators.required]],
       dataVencimento: [null, [Validators.required]],
       obs: [null, [Validators.required]],
+      obraId: [null, [Validators.required]],
       pago: [null, [Validators.required]]
     });
   }
@@ -47,6 +50,7 @@ export class NovaSaidaComponent implements OnInit {
   ngOnInit(): void {
     this.empresasJavaList = this.db.listarEmpresasJavaGas();
     this.categoriasList = this.db.listarCategorias();
+    this.obrasList = this.db.listarTodasObrasAtivas();
     // this.listarTeste();
     //this.listarTeste2();
 

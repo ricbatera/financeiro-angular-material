@@ -59,9 +59,9 @@ export class DetalhesSaidasComponent implements OnInit {
       width: '500px',
     })
     dialogRef.afterClosed().subscribe(result => {
-        console.log(result.value);
         this.db.atualizarSaida(result.value).subscribe(res=>{
-          this.route.navigate([`sistema/saidas`])
+          this.route.navigate([`sistema/saidas`]);
+          this.route.navigate([`sistema/saidas/lista-saida`])
         }, err =>{
           console.log(err)
           alert("Erro ao processar sua solicitação. Consulte o Administrador do sistema.")
@@ -109,7 +109,7 @@ export class DialogEditar{
       categoriaId: [null, [Validators.required]],
       valorEsperado: [null, [Validators.required]],
       dataVencimento: [null, [Validators.required]],
-      atualizarValorParcelasFuturas: [null],
+      atualizarValorParcelasFuturas: [false],
       id: [null],
       idParcelaAtual: [null],
       obs: [null, [Validators.required]]

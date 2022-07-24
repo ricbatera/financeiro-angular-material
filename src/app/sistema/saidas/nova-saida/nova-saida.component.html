@@ -2,11 +2,24 @@
     <form [formGroup]="formulario" (ngSubmit)="salvar()">
         <h3>Cadastro de nova saída</h3>
         <div class="linha">
-            <div class="col4">
+            <div class="col3">
                 <mat-form-field appearance="outline">
                     <mat-label>Descrição</mat-label>
                     <input type="text" matInput formControlName="descricao">
                     <mat-error *ngIf="!validaCampo('descricao')">
+                        Este campo é <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Obra</mat-label>
+                    <mat-select matInput formControlName="obraId">
+                        <mat-option *ngFor="let obra of obrasList | async" [value]="obra.id">
+                            {{obra.obra}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!validaCampo('obraId')">
                         Este campo é <strong>obrigatório</strong>
                     </mat-error>
                 </mat-form-field>
@@ -24,7 +37,7 @@
                     </mat-error>
                 </mat-form-field>
             </div>
-            <div class="col2">
+            <div class="col1">
                 <mat-form-field appearance="outline">
                     <mat-label>Catergoria</mat-label>
                     <mat-select matInput formControlName="categoriaId">
