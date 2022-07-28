@@ -2,10 +2,10 @@ mat-drawer-container{
   height: calc(100vh - 64px);
 }
 mat-drawer{
-  padding:10px 25px;
+  padding:5px 10px;
 }
 
 mat-drawer a{
-  width: 150px;
+  width: 130px;
   margin: 5px 0;
 }

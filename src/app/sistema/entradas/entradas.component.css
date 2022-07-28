@@ -1,21 +1,11 @@
-.estrutura{
-    width: 100%;
-    display: flex;
-  }
-  
-  .conteudo{
-    width: 100%;
-  }
-  
-  .my-sidebar{
-    width: 300px;
-  }
-  
-  .collection .collection-item.active{
-      background-color: #ee6e73;
-      color: #eafaf9;
-  }
-  
-  .collection a.collection-item{
-      color: #ee6e73;
-  }
+mat-drawer-container{
+  height: calc(100vh - 64px);
+}
+mat-drawer{
+  padding:5px 10px;
+}
+
+mat-drawer a{
+  width: 140px;
+  margin: 5px 0;
+}

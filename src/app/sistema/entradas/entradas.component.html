@@ -1,4 +1,17 @@
-<div class="estrutura">
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened>
+        <a mat-stroked-button routerLink="lista-entrada">Lista de Entradas</a><br>
+        <a mat-stroked-button routerLink="nova-entrada">Nova Entrada</a><br>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+
+
+
+
+<!-- <div class="estrutura">
     <div class="my-sidebar">
         <div class="collection">
             <a routerLink="lista-entrada" class="collection-item active">Lista de Entradas</a>
@@ -8,4 +21,4 @@
     <div class="conteudo">
         <router-outlet></router-outlet>
     </div>
-</div>
+</div> -->

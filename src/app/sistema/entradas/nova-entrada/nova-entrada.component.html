@@ -1,4 +1,98 @@
-<div>
+<div class="container-geral">
+    <form [formGroup]="formulario" (ngSubmit)="salvar()">
+        <h3>Cadastro de nova saída</h3>
+        <div class="linha">
+            <div class="col3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Descrição</mat-label>
+                    <input type="text" matInput formControlName="descricao">
+                    <mat-error *ngIf="!validaCampo('descricao')">
+                        Este campo é <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Obra</mat-label>
+                    <mat-select matInput formControlName="obraId">
+                        <mat-option *ngFor="let obra of obrasList | async" [value]="obra.id">
+                            {{obra.obra}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!validaCampo('obraId')">
+                        Este campo é <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Empresa</mat-label>
+                    <mat-select matInput formControlName="empresaId">
+                        <mat-option *ngFor="let empresa of empresasJavaList | async" [value]="empresa.id">
+                            {{empresa.empresa}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!validaCampo('empresaId')">
+                        Este campo é <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="linha">
+            <div class="col3">
+                <mat-form-field appearance="outline">
+                    <mat-label>Valor</mat-label>
+                    <input type="text" matInput currencyMask
+                        [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', suffix: '' }"
+                        formControlName="valorEsperado">
+                    <mat-error *ngIf="!validaCampo('valorEsperado')">
+                        Campo <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Recebimento previsto para</mat-label>
+                    <input type="date" matInput formControlName="dataVencimento">
+                    <mat-error *ngIf="!validaCampo('dataVencimento')">
+                        Campo <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col2">
+                <mat-form-field appearance="outline">
+                    <mat-label>Recebido?</mat-label>
+                    <mat-select matInput formControlName="recebido">
+                        <mat-option [value]=true>Sim</mat-option>
+                        <mat-option [value]=false>Não</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="!validaCampo('recebido')">
+                        Campo <strong>obrigatório</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="linha">
+            <div class="col8">
+                <mat-form-field appearance="outline">
+                    <mat-label>Observações</mat-label>
+                    <textarea matInput formControlName="obs"></textarea>
+                </mat-form-field>
+                <mat-error *ngIf="!validaCampo('obs')">
+                    Este campo é <strong>obrigatório</strong>
+                </mat-error>
+            </div>
+        </div>
+        <div class="linha">
+            <div class="col1">
+                <button type="submit" mat-raised-button color="primary">Salvar <mat-icon>save</mat-icon></button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!-- <div>
     <div class="row">
         <h5 class="col s12">Cadastro de novas entradas</h5>
         <form class="col s12">
@@ -51,4 +145,4 @@
         </form>
         <p>{{listaObras | async | json}}</p>
     </div>
-</div>
+</div> -->
